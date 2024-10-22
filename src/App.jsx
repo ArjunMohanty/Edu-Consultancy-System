@@ -14,10 +14,12 @@ import LoginSignUp from './components/LoginSignup/LoginSignup';
 
 const App = () => {
   const [playState, setPlayState] = useState(false);
+  const[showLogin,setShowLogin]=useState(false);
 
   return (
     <>
-      <Navbar /> {/* Navbar visible on all pages */}
+    {showLogin?<LoginSignUp setShowLogin={setShowLogin}/>:<></>}
+      <Navbar setShowLogin={setShowLogin}/> {/* Navbar visible on all pages */}
       
       <Routes> {/* Define routes here */}
         <Route path="/" element={
@@ -38,7 +40,7 @@ const App = () => {
         } />
 
         <Route path="/blogs" element={<Blogs />} />
-        <Route path="/signup" element={<LoginSignUp />} />
+      
       </Routes>
     </>
   );

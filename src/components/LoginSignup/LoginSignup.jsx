@@ -1,38 +1,37 @@
 import React, { useState } from 'react'
 import './LoginSignup.css'
-import user_icon from '/src/assets/person.png'
-import email_icon from '/src/assets/email.png'
-import password_icon from '/src/assets/password.png'
-const LoginSignUp = () => {
-    const [action,setAction]=useState("Login");
+import cross_icon from '/src/assets/cross_icon.png'
+
+const LoginSignUp = ({setShowLogin}) => {
+    const [currState,setCurrState]=useState("Sign Up");
   return (
-    <div className='logincontainer'>
-      <div className="header">
-      <div className="text">{action}</div>
-      <div className="underline"></div>
-      </div>
-        <div className="inputs">
-           {action=== "Login"?<div></div>: <div className='input'>
-            <img src={user_icon} alt=''/>
-          <input type="text" placeholder=' Name' />
-         
-        </div>}
-        <div className='input'>
-                <img src={email_icon} alt=''/>
-          <input type="email" placeholder='Email Id' />
-         
-        </div>
-        <div className='input'>
-                <img src={password_icon} alt=''/>
-          <input type="password" placeholder='Password' />
-         </div>
-        </div>
-        {action==="Sign Up"?<div></div>:<div className='forgot-password'>Forgot Password? <span>Click Here!</span></div>
-        }
-        <div className='submit-container'>
-            <div className={action==="Login"?"submit gray":"submit"} onClick={()=>{setAction("Sign Up")}}>Sign Up</div>
-            <div className={action==="Sign Up"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}>Log In</div>
-        </div>
+    <div className='login-popup'>
+                 <form className='login-popup-container'>
+                   <div className="login-popup-title">
+                    <h2>{currState}</h2>
+                    <img onClick={()=>setShowLogin(false)} src={cross_icon} alt=''/>
+
+                    
+                   </div>
+                  <div className='login-popup-inputs'>
+                    {currState==="Login"?<></>:<input type='text' placeholder='Name' required/>}
+                    
+                    <input type='email' placeholder='E-mail' required/>
+                    <input type='password' placeholder='Password' required/>
+
+
+                  </div>
+                  <button>{currState==="Sign Up"?"Create Account":"Login"}</button>
+                  <div className='login-popup-condition'>
+                    <input type='checkbox' required/>
+                    <p>By continuing, I agree to the terms of use & privacy policy</p>
+                  </div>
+                  {currState==="Login"
+                  ?  <p>Create a new account? <span onClick={()=>setCurrState("Sign Up")}>Click here</span></p>
+                  :  <p>Already have an account?<span onClick={()=>setCurrState("Login")}>Login Here</span></p>
+                  }
+                 
+                 </form>
       </div>
     
   )

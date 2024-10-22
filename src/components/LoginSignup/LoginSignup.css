@@ -1,86 +1,64 @@
-.logincontainer{
-    margin-top: 60px;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-top: 40px;
-    background: #fff;
-    padding-bottom: 30px;
-    width: 600px;
-    position: inherit;
-}
-.header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
+.login-popup{
+    position: absolute;
+    z-index:1;
     width: 100%;
-    margin-top: 30px;
+    height: 100%;
+    display: grid;
 }
-.text{
-    color: #3c009d;
-    font-size: 48px;
-    font-weight: 700;
-}
-.inputs{
-    margin-top: 55px;
+.login-popup-container{
+    place-self: center;
+    width: max(23vw,330px);
+    color: #808080;
+    background-color: white;
     display: flex;
     flex-direction: column;
     gap: 25px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 0.5s;
 }
-
-.input{
+.login-popup-title{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ color: black;
+}
+.login-popup-title img{
+ width: 16px;
+ cursor: pointer;
+}
+.login-popup-inputs{
     display: flex;
-    align-items: center;
-    margin: auto;
-    width: 480px;
-    height: 80px;
-    background: #eaeaea;
-    border-radius: 6px;
-
+    flex-direction: column;
+    gap: 20px;
 }
-.input img{
-    margin: 0px 30px;
-}
-.input input{
-    height: 50px;
-    width: 400px;
-    background: transparent;
-    border: none;
+.login-popup-inputs input{
     outline: none;
-    color: #797979;
-    font-size: 19px;
+    border: 1px solid #c9c9c9;
+    padding: 10px;
+    border-radius: 4px;
 }
-.forgot-password{
-    padding-left: 62px;
-    margin-top: 27px;
-    color: #797979;
-    font-size: 18px;
-}
-.forgot-password span{
-    color: #Ac00b4;
+.login-popup-container button{
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    background: #2312A0;
+    font-size: 15px;
     cursor: pointer;
 }
-.submit-container{
-    display: flex;
-    gap: 30px;
-    margin: 60px auto;
+.login-popup-condition{
+    display:flex;
+    align-items: start;
+    gap: 8px;
+    margin-top: -15px;
 }
-.submit{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width:220px;
-    height: 59px;
-    color: #fff;
-    background: #4c00b4;
-    border-radius: 50px;
-    font-size: 19px;
-    font-weight: 700;
+.login-popup-condition input{
+    margin-top: 5px; 
+}
+.login-popup p span{
+    color: #2312A0;
+    font-weight: 500;
     cursor: pointer;
-
-}
-.gray{
-    background: #EAEAEA;
-    color: #676767;
 }
