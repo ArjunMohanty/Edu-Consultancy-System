@@ -11,17 +11,28 @@ import Footer from './components/Footer/Footer';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import Blogs from './components/Blogs/Blogs'; // Import Blogs component
 import LoginSignUp from './components/LoginSignup/LoginSignup';
+import Dashboard from './components/Dashboard/Dashboard';
+import AccountSettings from './components/UserProfile/AccountSettings';
+import Orders from './components/UserProfile/Orders';
+import SingleBlog from './components/Blogs/SingleBlog';
+import JavaFullstack from './components/Products/JavaFullstack';
+import Learning from './components/Products/Learning';
+import DigitalMarketing from './components/Products/DigitalMarketing';
 
 const App = () => {
   const [playState, setPlayState] = useState(false);
-  const[showLogin,setShowLogin]=useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [username, setUsername] = useState(""); // Global username state
 
   return (
     <>
-    {showLogin?<LoginSignUp setShowLogin={setShowLogin}/>:<></>}
-      <Navbar setShowLogin={setShowLogin}/> {/* Navbar visible on all pages */}
-      
-      <Routes> {/* Define routes here */}
+      {/* Show login/signup popup if showLogin is true */}
+      {showLogin && <LoginSignUp setShowLogin={setShowLogin} setUsername={setUsername} />} 
+
+      {/* Pass username to Navbar */}
+      <Navbar setShowLogin={setShowLogin} username={username} />
+
+      <Routes>
         <Route path="/" element={
           <>
             <Hero />
@@ -38,9 +49,14 @@ const App = () => {
             <VideoPlayer playState={playState} setPlayState={setPlayState} />
           </>
         } />
-
         <Route path="/blogs" element={<Blogs />} />
-      
+        {/* Pass username to Dashboard */}
+        <Route path="/dashboard" element={<Dashboard username={username}/>}  />
+        <Route path="/dashboard/orders" element={<Orders/>}  />
+        <Route path='/javafullstack' element={<JavaFullstack/>} />
+        <Route path='/learning' element={<Learning/>} />
+        <Route path='/digitalmarketing' element={<DigitalMarketing/>} />
+
       </Routes>
     </>
   );
