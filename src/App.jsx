@@ -10,6 +10,7 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 import Blogs from './components/Blogs/Blogs'; // Import Blogs component
+import Product from './components/productfld/Product';
 import LoginSignUp from './components/LoginSignup/LoginSignup';
 import Dashboard from './components/Dashboard/Dashboard';
 import AccountSettings from './components/UserProfile/AccountSettings';
@@ -18,6 +19,7 @@ import SingleBlog from './components/Blogs/SingleBlog';
 import JavaFullstack from './components/Products/JavaFullstack';
 import Learning from './components/Products/Learning';
 import DigitalMarketing from './components/Products/DigitalMarketing';
+
 
 const App = () => {
   const [playState, setPlayState] = useState(false);
@@ -49,7 +51,11 @@ const App = () => {
             <VideoPlayer playState={playState} setPlayState={setPlayState} />
           </>
         } />
+        
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/product" element={<Product />} />
+      
+        
         {/* Pass username to Dashboard */}
         <Route path="/dashboard" element={<Dashboard username={username}/>}  />
         <Route path="/dashboard/orders" element={<Orders/>}  />

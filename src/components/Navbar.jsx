@@ -26,7 +26,8 @@ const Navbar = ({ setShowLogin, username }) => { // Accept username as a prop
   };
 
   // Check if the current path is "/javafullstack", "/learning", or "/digitalmarketing"
-  const isDarkNavPage = ['/javafullstack', '/learning', '/digitalmarketing'].includes(location.pathname);
+  const isDarkNavPage = location.pathname === '/product'
+  
 
   return (
     <nav className={`container ${sticky || isDarkNavPage ? 'dark-nav' : ''}`}>
@@ -36,7 +37,7 @@ const Navbar = ({ setShowLogin, username }) => { // Accept username as a prop
 
       <ul className={mobileMenu ? '' : 'hide-mobile-menu'}>
         <li><ScrollLink to='hero' smooth={true} offset={0} duration={500}><Link to="/" className='logo-link'>Home</Link></ScrollLink></li>
-        <li><ScrollLink to='program' smooth={true} offset={-260} duration={500}>Product</ScrollLink></li>
+        <li><Link to='/product'>Product</Link></li>
         <li><ScrollLink to='about' smooth={true} offset={-150} duration={500}>About us</ScrollLink></li>
         <li><ScrollLink to='testimonials' smooth={true} offset={-260} duration={500}>Testimonials</ScrollLink></li>
         <li><ScrollLink to='contact' smooth={true} offset={-170} duration={500}>Contact Us</ScrollLink></li>
