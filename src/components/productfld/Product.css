@@ -79,6 +79,7 @@
   margin-left:80px;
   display:flex;
   justify-content:space-around;
+  
 }
 .buttons button:hover{
    background-color:#212EA0;
@@ -92,6 +93,7 @@
   border-radius:40px;
   border:1px solid black;
   cursor:pointer;
+  color: black;
 }
 .cards-container {
   display: flex;
