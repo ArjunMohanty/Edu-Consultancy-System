@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 {/*import React from 'react'*/ }
 import './Product.css'
+<<<<<<< HEAD
 import { useCourseContext } from "../CourseContext.jsx"
+=======
+>>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
 import next_icon from '/src/assets/right-arrow.png'
 import back_icon from '/src/assets/left-arrow.png'
 import blog1 from '/src/assets/img2.jpeg'
@@ -46,10 +49,16 @@ import comcourse7 from '/src/assets/Product/Communication/collaboration.jpg'
 import SampleCertificate from '../SampleCertificate/SampleCertificate.jsx';
 import Faq from '../FAQ/Faq.jsx';
 import Footer from '../Footer/Footer.jsx';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
 
 {/* Courses for different categories */ }
 const allCourses =  {
+=======
+
+{/* Courses for different categories */ }
+const allCourses = {
+>>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
   'Web Development': [
     {
       image: webcourse1,
@@ -281,6 +290,7 @@ const allCourses =  {
 const Product = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('Web Development');
+<<<<<<< HEAD
   const { addCourse } = useCourseContext(); // Access addCourse from context
   const navigate = useNavigate();
 
@@ -289,6 +299,10 @@ const Product = () => {
   };
 
 
+=======
+  
+  
+>>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
 
   // Array of images
   const images = [blog1, blog2, blog3]; // Add more images to this array as needed
@@ -336,7 +350,10 @@ const Product = () => {
               title={course.title}
               description={course.description}
               price={course.price}
+<<<<<<< HEAD
              
+=======
+>>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
             />
             ))}
       </div>

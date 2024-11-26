@@ -5,6 +5,7 @@
     height: 100%;
     display: grid;
 }
+<<<<<<< HEAD
 .profile-container {
     position: relative;
     display: inline-block;
@@ -38,6 +39,8 @@
     background-color: #f5f5f5;
 }
 
+=======
+>>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
 .login-popup-container{
     place-self: center;
     width: max(23vw,330px);
@@ -94,9 +97,12 @@
     color: #2312A0;
     font-weight: 500;
     cursor: pointer;
+<<<<<<< HEAD
 }
 .adminlogin{
     color: #2312A0;
     font-weight: 500;
     cursor: pointer;
+=======
+>>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
 }
