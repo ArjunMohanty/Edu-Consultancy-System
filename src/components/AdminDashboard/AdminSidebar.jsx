@@ -27,7 +27,7 @@ const AdminSidebar = () => {
         <li>
           <Link to="/adminsubscription">Subscriptions</Link>
         </li>
-        <li>Feedback</li>
+        <li> <Link to="/">Feedback</Link></li>
       </ul>
     </div>
   );

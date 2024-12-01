@@ -1,14 +1,10 @@
 import React from 'react';
 import './Sidebar.css';
-<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
 
 const UserSidebar = ({ activePage, setActivePage }) => {
   const navigate = useNavigate();
-=======
 
-const UserSidebar = ({ activePage, setActivePage }) => {
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
   return (
     <div className='usersidebar'>
       <div 
@@ -33,19 +29,14 @@ const UserSidebar = ({ activePage, setActivePage }) => {
       </div>
 
       <div 
-  className={`s1 ${activePage === 'yourorders' ? 'active' : ''}`} 
-<<<<<<< HEAD
-  onClick={() => navigate("/mycourses")}
-=======
-  onClick={() => setActivePage('yourorders')}
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
->
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-  </svg>
-  <span>My Courses</span>
-</div>
-
+        className={`s1 ${activePage === 'yourorders' ? 'active' : ''}`} 
+      
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+        </svg>
+        <span>My Courses</span>
+      </div>
 
       <div 
         className={`s1 ${activePage === 'address' ? 'active' : ''}`} 

@@ -79,7 +79,7 @@ export default function Success() {
   }, [purchasedCourse]);
 
   const handleGoToCourses = () => {
-    navigate("/mycourses"); // Navigate to MyCourses
+    navigate("/"); // Navigate to MyCourses
   };
 
   return (
@@ -106,15 +106,7 @@ export default function Success() {
     >
       <b>Order Confirmed</b>
     </Typography>
-    <div className={classes.buttonContainer}>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleGoToCourses}
-      >
-        Go to My Courses
-      </Button>
-    </div>
+
   </CardContent>
 </Card>
 

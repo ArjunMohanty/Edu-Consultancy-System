@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React, { useContext, useState, useEffect } from 'react';
 import './AccountSettings.css';
 import { UserContext } from '../UserContext';
@@ -103,44 +103,3 @@ const AccountSettings = () => {
 };
 
 export default AccountSettings;
-=======
-import React from 'react'
-import './AccountSettings.css'
-
-const AccountSettings = () => {
-  return (
-    <div className='accountsettings'>
-      <h1 className='mainhead1'>Personal Information</h1>
-
-      <div className='form'>
-        <div className='form-group'>
-          <label htmlFor='name'>Your Name <span>*</span></label>
-          <input type='text' name='name' id='name' />
-        </div>
-
-        <div className='form-group'>
-          <label htmlFor='phone'>Phone/Mobile <span>*</span></label>
-          <input type='text' name='phone' id='phone'
-
-          />
-        </div>
-
-        <div className='form-group'>
-          <label htmlFor='email'>Email <span>*</span></label>
-          <input type='email' name='email' id='email'
-
-          />
-        </div>
-
-      
-      </div>
-
-      <button className='mainbutton1'
-        
-        >Save Changes</button>
-    </div>
-  )
-}
-
-export default AccountSettings
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8

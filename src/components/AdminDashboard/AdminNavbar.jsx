@@ -18,10 +18,13 @@ const AdminNavbar = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('adminName');
     setAnchorEl(null);
     navigate('/');
   };
+
+  // Get admin name from localStorage (set after login)
+  const adminName = localStorage.getItem("adminName");
 
   return (
     <div className="admin-navbar">
@@ -35,13 +38,14 @@ const AdminNavbar = () => {
 
       {/* Right Section */}
       <div className="admin-navbar-right">
+        <span className="admin-greeting">Hi, {adminName || 'Admin'}</span> {/* Display admin name */}
         <AccountCircleIcon fontSize="large" onClick={handleMenuClick} />
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={handleMenuClose}
         >
-          <MenuItem onClick={() => navigate('/admin/profile')}>Profile</MenuItem>
+          <MenuItem onClick={() => navigate('/')}>Profile</MenuItem>
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       </div>

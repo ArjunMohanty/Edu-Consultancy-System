@@ -1,142 +1,123 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './UserAddress.css';
 
-const UserAddress = () => {
-    const [show, setShow] = useState(false);
-    const [savedAddresses, setSavedAddresses] = useState([
-       
-    ]);
-
+const UserAddress = ({ userId }) => {
+    const [showForm, setShowForm] = useState(false);
+    const [savedAddress, setSavedAddress] = useState([]);
     const [newAddress, setNewAddress] = useState({
         AddressLine1: '',
         AddressLine2: '',
         AddressLine3: '',
     });
 
+    // Use userId to load saved addresses from localStorage when the component mounts
+    useEffect(() => {
+        if (userId) {
+            const storedAddresses = localStorage.getItem(`savedAddresses_${userId}`);
+            if (storedAddresses) {
+                setSavedAddress(JSON.parse(storedAddresses));
+            }
+        }
+    }, [userId]);
+
+    // Save the updated addresses to localStorage whenever savedAddress changes
+    useEffect(() => {
+        if (userId && savedAddress.length > 0) {
+            localStorage.setItem(`savedAddresses_${userId}`, JSON.stringify(savedAddress));
+        }
+    }, [savedAddress, userId]);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setNewAddress((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
+        setNewAddress({ ...newAddress, [name]: value });
     };
 
-    const handleSaveAddress = () => {
+    const saveAddress = () => {
         if (newAddress.AddressLine1 && newAddress.AddressLine2 && newAddress.AddressLine3) {
-            setSavedAddresses((prev) => [...prev, newAddress]);
-            setNewAddress({
-                AddressLine1: '',
-                AddressLine2: '',
-                AddressLine3: '',
-            });
-            setShow(false); // Close the form after saving
+            const updatedAddresses = [...savedAddress, newAddress];
+            setSavedAddress(updatedAddresses);
+            setNewAddress({ AddressLine1: '', AddressLine2: '', AddressLine3: '' });
+            setShowForm(false);
         } else {
-            alert('Please fill in all fields.');
+            alert('Please fill out all address fields.');
         }
     };
 
-    const handleDeleteAddress = (index) => {
-        const updatedAddresses = savedAddresses.filter((_, idx) => idx !== index);
-        setSavedAddresses(updatedAddresses);
+    const deleteAddress = (index) => {
+        const updatedAddresses = savedAddress.filter((_, i) => i !== index);
+        setSavedAddress(updatedAddresses);
     };
 
     return (
         <div className="useraddress">
-            {!show && <h1 className="mainhead1">Your Address</h1>}
+            <h1 className="mainhead1">Your Address</h1>
 
-            {!show && (
-                <div className="addressin">
-                    {savedAddresses.map((item, index) => (
+            {/* Address List */}
+            <div className="addressin">
+                {savedAddress.length > 0 ? (
+                    savedAddress.map((item, index) => (
                         <div className="address" key={index}>
-                            <span>{item.AddressLine1}</span>,
-                            <span>{item.AddressLine2}</span>,
-                            <span>{item.AddressLine3}</span>
-                            <div className="delbtn" onClick={() => handleDeleteAddress(index)}>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </div>
+                            <p>{item.AddressLine1}</p>
+                            <p>{item.AddressLine2}</p>
+                            <p>{item.AddressLine3}</p>
+                            <button
+                                className="delbtn"
+                                onClick={() => deleteAddress(index)}
+                            >
+                                &times;
+                            </button>
                         </div>
-                    ))}
-                </div>
+                    ))
+                ) : (
+                    <p className="no-address">No addresses added yet. Add a new address below.</p>
+                )}
+            </div>
+
+            {/* Add Address Button */}
+            {!showForm && (
+                <button
+                    className="mainbutton1 add-address-btn"
+                    onClick={() => setShowForm(true)}
+                >
+                    Add New Address
+                </button>
             )}
 
-            {!show && (
-               <div 
-               className="addnewbtn" 
-               onClick={() => setShow(true)} 
-               style={{
-                   display: 'flex',
-                   alignItems: 'center',
-                   justifyContent: 'center',
-                   width: '50px', 
-                   height: '50px', 
-                   backgroundColor: '#f0f0f0', 
-                   borderRadius: '50%', 
-                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', 
-                   cursor: 'pointer',
-                   margin: '20px auto',
-               }}
-           >
-               <svg 
-                   xmlns="http://www.w3.org/2000/svg" 
-                   fill="none" 
-                   viewBox="0 0 24 24" 
-                   strokeWidth={1.5} 
-                   stroke="currentColor" 
-                   style={{
-                       width: '24px', 
-                       height: '24px', 
-                       stroke: '#212EA0'
-                   }}
-               >
-                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-               </svg>
-           </div>
-           
-            )}
-
-            {show && (
+            {/* Add New Address Form */}
+            {showForm && (
                 <div className="addnew">
-                    <h1 className="mainhead1">Add New Address</h1>
+                    <h2 className="mainhead2">Add New Address</h2>
                     <div className="form">
                         <div className="form-group">
-                            <label htmlFor="addressline1">Pincode</label>
+                            <label>Pincode</label>
                             <input
                                 type="text"
                                 name="AddressLine1"
                                 value={newAddress.AddressLine1}
                                 onChange={handleInputChange}
-                                required
                             />
                         </div>
-
                         <div className="form-group">
-                            <label htmlFor="addressline2">Address</label>
+                            <label>Address</label>
                             <input
                                 type="text"
                                 name="AddressLine2"
                                 value={newAddress.AddressLine2}
                                 onChange={handleInputChange}
-                                required
                             />
                         </div>
-
                         <div className="form-group">
-                            <label htmlFor="addressline3">State</label>
+                            <label>State</label>
                             <input
                                 type="text"
                                 name="AddressLine3"
                                 value={newAddress.AddressLine3}
                                 onChange={handleInputChange}
-                                required
                             />
                         </div>
                     </div>
-
-                    <button className="mainbutton1" onClick={handleSaveAddress}>
-                        Save
+                    <button className="mainbutton1" onClick={saveAddress}>
+                        Save Address
                     </button>
                 </div>
             )}
@@ -145,116 +126,3 @@ const UserAddress = () => {
 };
 
 export default UserAddress;
-=======
-import React from 'react'
-import './UserAddress.css'
-
-const UserAddress = () => {
-    const [show, setShow] = React.useState(false)
-
-    const savedaddress = [
-        {
-            AddressLine1: 'AddressLine1',
-            AddressLine2: 'AddressLine2',
-            AddressLine3: 'AddressLine3',
-        },
-        {
-            AddressLine1: 'AddressLine5',
-            AddressLine2: 'AddressLine6',
-            AddressLine3: 'AddressLine7',
-        },
-        {
-            AddressLine1: 'AddressLine8',
-            AddressLine2: 'AddressLine9',
-            AddressLine3: 'AddressLine10',
-        }
-    ]
-    return (
-        <div className='useraddress'>
-            {
-                !show && <h1 className='mainhead1'>Your Address</h1>
-            }
-            {
-                !show &&
-
-                <div className='addressin'>
-                    {
-                        savedaddress.map((item, index) => {
-                            return (
-                                <div className='address' key={index}>
-                                    <span>{item.AddressLine1}</span>,
-                                    <span>{item.AddressLine2}</span>,
-                                    <span>{item.AddressLine3}</span>
-
-
-                                    <div className='delbtn'>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            }
-
-            {
-                !show && <div className='addnewbtn'
-
-                    onClick={() => setShow(true)}
-                >
-                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-</svg>
-
-
-                </div>
-            }
-            {
-                show &&
-
-                <div className='addnew'>
-                    <h1 className='mainhead1'>Add New Address</h1>
-                    <div className='form'>
-                        <div className='form-group'>
-                            <label htmlFor='postalcode'>Postal Code</label>
-                            <input type="text" />
-                        </div>
-
-{/*                        
-                    </div>
-
-
-
-                    <div className='form'>
-                       */}
-
-                        <div className='form-group'>
-                            <label htmlFor='addressline1'>Address Line 1</label>
-                            <input type="text" />
-                        </div>
-
-                        <div className='form-group'>
-                            <label htmlFor='addressline2'>Address Line 2</label>
-                            <input type="text" />
-                        </div>
-
-                        <div className='form-group'>
-                            <label htmlFor='addressline3'>Address Line 3</label>
-                            <input type="text" />
-                        </div>
-                    </div>
-
-                    <button className='mainbutton1'
-                        onClick={() => setShow(false)}
-                    >Save</button>
-                </div>
-            }
-        </div>
-    )
-}
-
-export default UserAddress
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8

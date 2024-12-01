@@ -1,37 +1,24 @@
-<<<<<<< HEAD
-import React from "react";
-import "./Card.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './Card.css';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate hook
 
 const Card = ({ image, title, description, price }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate();  // Initialize navigate
 
-  const handlePurchase = () => {
-    const course = { image, title, description, price }; // Construct the course object
-    navigate("/payment", { state: { purchasedCourse: course } }); // Pass the course details
+  const handlePaymentClick = () => {
+    // Redirect to the payment page when the button is clicked
+    navigate("/payment");
   };
 
-=======
-import React from 'react';
-import './Card.css'; {/*Separate CSS for Card styling*/}
-
-const Card = ({ image, title, description, price }) => {
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
   return (
     <div className="card">
       <img src={image} alt={title} className="card-image" />
       <div className="card-content">
         <h3 className="card-title">{title}</h3>
         <p className="card-description">{description}</p>
-<<<<<<< HEAD
         <p className="card-price">{price}</p>
-        <button className="card-button" onClick={handlePurchase}>
-          Pay Now
-        </button>
-=======
-        <p className="card-price">{ price }</p>
-        <button className="card-button" onClick={()=>alert("Product Payment form")}>Pay Now</button>
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
+        {/* Update onClick to call the handlePaymentClick function */}
+        <button className="card-button" onClick={handlePaymentClick}>Pay Now</button>
       </div>
     </div>
   );

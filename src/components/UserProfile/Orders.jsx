@@ -9,10 +9,8 @@ import program_icon_3 from '/src/assets/program-icon-3.png'
 function Orders() {
   return (
     <div>
-<<<<<<< HEAD
             
 
-=======
             <div className="program">
         <img src={program_1} alt="" />
         <div className="caption">
@@ -20,7 +18,6 @@ function Orders() {
           <p>Java Full Stack</p>
         </div>
       </div>
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
     </div>
   )
 }

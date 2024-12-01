@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 {/*import React from 'react'*/ }
 import './Product.css'
-<<<<<<< HEAD
-import { useCourseContext } from "../CourseContext.jsx"
-=======
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
 import next_icon from '/src/assets/right-arrow.png'
 import back_icon from '/src/assets/left-arrow.png'
 import blog1 from '/src/assets/img2.jpeg'
@@ -49,16 +45,9 @@ import comcourse7 from '/src/assets/Product/Communication/collaboration.jpg'
 import SampleCertificate from '../SampleCertificate/SampleCertificate.jsx';
 import Faq from '../FAQ/Faq.jsx';
 import Footer from '../Footer/Footer.jsx';
-<<<<<<< HEAD
-import { useNavigate } from 'react-router-dom';
-
-{/* Courses for different categories */ }
-const allCourses =  {
-=======
 
 {/* Courses for different categories */ }
 const allCourses = {
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
   'Web Development': [
     {
       image: webcourse1,
@@ -101,7 +90,7 @@ const allCourses = {
       image: webcourse7,
       title: "Modern HTML & CSS for Beginners",
       description: "This course introduces the fundamentals of HTML and CSS, focusing on modern web design techniques. Learn to structure websites with HTML and style them using CSS, including layouts, typography, and responsive design. Gain hands-on experience building clean, responsive websites from scratch.",
-      price:"Rs.1,299"
+      price:"Rs.1,299/-"
     },
   ],
    
@@ -179,20 +168,20 @@ const allCourses = {
     {
       image: aicourse5,
       title: "Computer Vision with AI",
-      description: "This course explores how AI enables machines to interpret and understand visual information. Topics include image processing, object detection, and face recognition using deep learning techniques. Students will also examine the impact of computer vision on industries like healthcare, automotive, and retail.",
+      description: "This course covers how AI enables machines to interpret and understand visual information. Topics include image processing, object detection, and face recognition using deep learning techniques. Students will explore the practical applications of computer vision in various industries, including healthcare, automotive, and retail, and analyze its impact on business transformation.",
       price:"Rs.599/-"
     },
     {
       image: aicourse6,
       title: "AI in Robotics and Autonomous Systems",
       description: "This course covers the intersection of AI and robotics, teaching how AI is used to enable machines to perceive, reason, and act autonomously. Participants will learn about robot perception, motion planning, and control, and explore real-world applications in manufacturing, drones, and self-driving cars.",
-      price:"Rs.1,200"
+      price:"Rs.1,200/-"
     },
     {
       image: aicourse7,
       title: "AI Ethics and Responsible AI",
       description: "This course explores the ethical considerations surrounding AI technologies. Topics include bias in AI systems, privacy concerns, transparency in algorithms, and ensuring that AI is used responsibly and fairly, making it crucial for those developing AI systems for real-world applications.",
-      price:"Rs.200"
+      price:"Rs.200/-"
     }
   ],
 
@@ -290,19 +279,8 @@ const allCourses = {
 const Product = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('Web Development');
-<<<<<<< HEAD
-  const { addCourse } = useCourseContext(); // Access addCourse from context
-  const navigate = useNavigate();
-
-  const handlePay = () => {
-    navigate("/payment", { state: { purchasedCourse: product } });
-  };
-
-
-=======
   
   
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
 
   // Array of images
   const images = [blog1, blog2, blog3]; // Add more images to this array as needed
@@ -350,10 +328,6 @@ const Product = () => {
               title={course.title}
               description={course.description}
               price={course.price}
-<<<<<<< HEAD
-             
-=======
->>>>>>> 0652350ff7081b9bf457c71e288e57c2cf9907e8
             />
             ))}
       </div>
